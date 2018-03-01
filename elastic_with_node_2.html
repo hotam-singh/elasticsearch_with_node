@@ -1,0 +1,203 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p>In the previous article &quot;<span style="color: rgb(102, 102, 102); font-family: latoRegular; font-size: 14px; background-color: rgb(255, 255, 255);">Elastic Search With Node.JS Part 1</span>&quot;, I had discussed about a brief introduction of elasticsearch, creating an index and deleting an existing index in elasticsearch using Node.JS.</p>
+
+<p>Today, I am going to discuss below points:</p>
+
+<ol>
+	<li>Insert single document inside an index</li>
+	<li>Insert documents in a bulk inside an index</li>
+	<li>Count documents in&nbsp;index</li>
+	<li>Delete a document from an index</li>
+	<li>Delete all documents from an index</li>
+</ol>
+
+<p>For the demonstration purpose, we will be using &quot;test&quot; index and two types of documents i.e constituencies, petitions. So, let&#39;s start with above points one by one.</p>
+
+<h1>Insert Single Document</h1>
+
+<p>Create a new file <strong>document_add.js</strong> and paste the below code.</p>
+<!-- HTML generated using hilite.me -->
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+<pre style="margin: 0; line-height: 125%">
+client.index({
+    index<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;etp&#39;</span>,
+    id<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;1&#39;</span>,
+    type<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;users&#39;</span>,
+    body<span style="color: #333333">:</span> {
+        <span style="background-color: #fff0f0">&quot;username&quot;</span><span style="color: #333333">:</span><span style="background-color: #fff0f0">&#39;hotam&#39;</span>,
+        <span style="background-color: #fff0f0">&quot;status&quot;</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">1</span>,
+        <span style="background-color: #fff0f0">&quot;isDelegate&quot;</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">0</span>,
+        <span style="background-color: #fff0f0">&quot;u_isDelegate&quot;</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">0</span>,
+        <span style="background-color: #fff0f0">&quot;secondSignature&quot;</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">0</span>,
+        <span style="background-color: #fff0f0">&quot;u_secondSignature&quot;</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">0</span>,
+        <span style="background-color: #fff0f0">&quot;u_username&quot;</span><span style="color: #333333">:</span><span style="color: #008800; font-weight: bold">null</span>,
+        <span style="background-color: #fff0f0">&quot;address&quot;</span><span style="color: #333333">:</span><span style="background-color: #fff0f0">&quot;15546849747111093123E&quot;</span>,
+        <span style="background-color: #fff0f0">&quot;publicKey&quot;</span><span style="color: #333333">:</span><span style="color: #008800; font-weight: bold">null</span>,
+        <span style="background-color: #fff0f0">&quot;secondPublicKey&quot;</span><span style="color: #333333">:</span><span style="color: #008800; font-weight: bold">null</span>,
+        <span style="background-color: #fff0f0">&quot;balance&quot;</span><span style="color: #333333">:</span><span style="background-color: #fff0f0">&quot;5000000000000&quot;</span>,
+        <span style="background-color: #fff0f0">&quot;u_balance&quot;</span><span style="color: #333333">:</span><span style="background-color: #fff0f0">&quot;5000000000000&quot;</span>,
+        <span style="background-color: #fff0f0">&quot;vote&quot;</span><span style="color: #333333">:</span><span style="background-color: #fff0f0">&quot;0&quot;</span>,
+        <span style="background-color: #fff0f0">&quot;rate&quot;</span><span style="color: #333333">:</span><span style="background-color: #fff0f0">&quot;0&quot;</span>,
+        <span style="background-color: #fff0f0">&quot;delegates&quot;</span><span style="color: #333333">:</span><span style="color: #008800; font-weight: bold">null</span>,
+        <span style="background-color: #fff0f0">&quot;u_delegates&quot;</span><span style="color: #333333">:</span><span style="color: #008800; font-weight: bold">null</span>,
+        <span style="background-color: #fff0f0">&quot;multisignatures&quot;</span><span style="color: #333333">:</span><span style="color: #008800; font-weight: bold">null</span>,
+        <span style="background-color: #fff0f0">&quot;u_multisignatures&quot;</span><span style="color: #333333">:</span><span style="color: #008800; font-weight: bold">null</span>,
+        <span style="background-color: #fff0f0">&quot;multimin&quot;</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">0</span>,
+        <span style="background-color: #fff0f0">&quot;u_multimin&quot;</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">0</span>,
+        <span style="background-color: #fff0f0">&quot;multilifetime&quot;</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">0</span>,
+        <span style="background-color: #fff0f0">&quot;u_multilifetime&quot;</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">0</span>,
+        <span style="background-color: #fff0f0">&quot;blockId&quot;</span><span style="color: #333333">:</span><span style="background-color: #fff0f0">&quot;7807109686729042739&quot;</span>,
+        <span style="background-color: #fff0f0">&quot;nameexist&quot;</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">0</span>,
+        <span style="background-color: #fff0f0">&quot;u_nameexist&quot;</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">0</span>,
+        <span style="background-color: #fff0f0">&quot;producedblocks&quot;</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">0</span>,
+        <span style="background-color: #fff0f0">&quot;missedblocks&quot;</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">0</span>,
+        <span style="background-color: #fff0f0">&quot;fees&quot;</span><span style="color: #333333">:</span><span style="background-color: #fff0f0">&quot;0&quot;</span>,
+        <span style="background-color: #fff0f0">&quot;rewards&quot;</span><span style="color: #333333">:</span><span style="background-color: #fff0f0">&quot;0&quot;</span>,
+        <span style="background-color: #fff0f0">&quot;acc_type&quot;</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">0</span>,
+        <span style="background-color: #fff0f0">&quot;transferedAmount&quot;</span><span style="color: #333333">:</span><span style="background-color: #fff0f0">&quot;0&quot;</span>,
+        <span style="background-color: #fff0f0">&quot;endTime&quot;</span><span style="color: #333333">:</span><span style="color: #008800; font-weight: bold">null</span>,
+        <span style="background-color: #fff0f0">&quot;totalFrozeAmount&quot;</span><span style="color: #333333">:</span><span style="background-color: #fff0f0">&quot;0&quot;</span>,
+        <span style="background-color: #fff0f0">&quot;virgin&quot;</span><span style="color: #333333">:</span><span style="color: #0000DD; font-weight: bold">1</span>
+    }
+}, <span style="color: #008800; font-weight: bold">function</span> (err, resp, status) {
+    console.log(<span style="background-color: #fff0f0">&#39;error : &#39;</span> <span style="color: #333333">+</span> err);
+    console.log(<span style="background-color: #fff0f0">&#39;resp :&#39;</span> <span style="color: #333333">+</span> resp);
+    console.log(<span style="background-color: #fff0f0">&#39;status :&#39;</span> <span style="color: #333333">+</span> status);
+});
+</pre>
+</div>
+
+<p>save this file and run using node document_add.js, you will see response like this. You will get status 201, it means document is created successfully.</p>
+
+<p><img alt="" src="https://s3.amazonaws.com/oodles-technologies1/blog-images/27e7e02c-853d-4c1e-9e72-91098f179839.png" /></p>
+
+<p><strong>Note:</strong> You can not use index name or type in uppercase&nbsp;letters. If you will use uppaercase letters, you will get an exception as below image. I am using index name <strong>ETP</strong> insteadof <strong>etp</strong>. I got this error:</p>
+
+<p><img alt="" src="https://s3.amazonaws.com/oodles-technologies1/blog-images/0be12744-68ef-4f11-8ccc-79396b1775c7.png" /></p>
+
+<h1>Insert Documents in bulk</h1>
+
+<p>Create a file <strong>document_bulk.js</strong> and paste following code:</p>
+<!-- HTML generated using hilite.me -->
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+<pre style="margin: 0; line-height: 125%">
+utils.makeBulk(rows, indexName, <span style="color: #008800; font-weight: bold">function</span> (err, resp) {
+    utils.indexall(resp, tableName, <span style="color: #008800; font-weight: bold">function</span> (err) {
+        <span style="color: #008800; font-weight: bold">if</span> (err) {
+            console.log(<span style="background-color: #fff0f0">&#39;err : &#39;</span> <span style="color: #333333">+</span> err);
+        } else {
+&nbsp;           console.log(&#39;bulk insertion successful&#39;);
+&nbsp;       }
+    });
+});
+</pre>
+</div>
+
+<p>Here rows is an array with bulk information and indexName is the name of an index.</p>
+
+<p>Now create one more file <strong>utils.js</strong> and paste following code:</p>
+<!-- HTML generated using hilite.me -->
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+<pre style="margin: 0; line-height: 125%">
+<span style="color: #888888">/**</span>
+<span style="color: #888888"> * Make bulk data to be saved on elasticsearch server.</span>
+<span style="color: #888888"> *</span>
+<span style="color: #888888"> * @param {Object} list</span>
+<span style="color: #888888"> * @param {Object} bulk</span>
+<span style="color: #888888"> */</span>
+exports.makeBulk <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">function</span> (list, index, cb) {
+    <span style="color: #008800; font-weight: bold">var</span> bulk <span style="color: #333333">=</span> [], indexId;
+    <span style="color: #008800; font-weight: bold">for</span> (<span style="color: #008800; font-weight: bold">var</span> current <span style="color: #008800; font-weight: bold">in</span> list) {
+        <span style="color: #008800; font-weight: bold">if</span> (list[current].id) {
+            indexId <span style="color: #333333">=</span> list[current].id;
+        } <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> (list[current].transactionId) {
+            indexId <span style="color: #333333">=</span> list[current].transactionId;
+        } <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span> (list[current].address) {
+            indexId <span style="color: #333333">=</span> list[current].address;
+        } <span style="color: #008800; font-weight: bold">else</span> {
+            indexId <span style="color: #333333">=</span> list[current].height;
+        }
+        bulk.push(
+            { index<span style="color: #333333">:</span> { _index<span style="color: #333333">:</span> index, _type<span style="color: #333333">:</span> index, _id<span style="color: #333333">:</span> indexId } },
+            list[current]
+        );
+    }
+    cb(<span style="color: #008800; font-weight: bold">null</span>, bulk);
+};
+
+<span style="color: #888888">/**</span>
+<span style="color: #888888"> * Index data on elasticsearch server.</span>
+<span style="color: #888888"> *</span>
+<span style="color: #888888"> * @param {Object} list</span>
+<span style="color: #888888"> * @param {Object} bulk</span>
+<span style="color: #888888"> */</span>
+exports.indexall <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">function</span> (bulk, index, cb) {
+    esClient.bulk({
+        maxRetries<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">5</span>,
+        index<span style="color: #333333">:</span> index,
+        type<span style="color: #333333">:</span> index,
+        body<span style="color: #333333">:</span> bulk
+    }, <span style="color: #008800; font-weight: bold">function</span> (err, resp, status) {
+        <span style="color: #008800; font-weight: bold">if</span> (err) {
+            cb(err);
+        } <span style="color: #008800; font-weight: bold">else</span> {
+            cb(<span style="color: #008800; font-weight: bold">null</span>);
+        }
+    })
+};
+
+</pre>
+</div>
+
+<h1>Count Documents in an Index&nbsp;</h1>
+
+<p>Here we will find total number of documents inside an index. elasticsearch provides count() method to count total number of documents. So, go to the code part and create a new file <strong>count.js</strong> and paste the following code:</p>
+<!-- HTML generated using hilite.me -->
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+<pre style="margin: 0; line-height: 125%">
+<span style="color: #008800; font-weight: bold">var</span> client <span style="color: #333333">=</span> require(<span style="background-color: #fff0f0">&#39;./connection.js&#39;</span>);
+
+client.count({ index<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;etp&#39;</span>, type<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;users&#39;</span> }, <span style="color: #008800; font-weight: bold">function</span> (err, resp, status) {
+  console.log(<span style="background-color: #fff0f0">&quot;response :&quot;</span>, resp);
+});
+</pre>
+</div>
+
+<p>When you run it, you will see something like this</p>
+
+<p><img alt="" src="https://s3.amazonaws.com/oodles-technologies1/blog-images/4741b0ca-6637-461a-825b-ae52815eb1bb.png" /></p>
+
+<h1>Delete a document</h1>
+
+<p>Deleting a document is as simple as deleting an index. Elasticsearch provides delete() method that deletes documents from an index.</p>
+<!-- HTML generated using hilite.me -->
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+<pre style="margin: 0; line-height: 125%">
+<span style="color: #008800; font-weight: bold">var</span> client <span style="color: #333333">=</span> require(<span style="background-color: #fff0f0">&#39;./connection.js&#39;</span>);
+
+client.<span style="color: #008800; font-weight: bold">delete</span>({
+    index<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;etp&#39;</span>,
+    id<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;1&#39;</span>,
+    type<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;users&#39;</span>
+}, <span style="color: #008800; font-weight: bold">function</span> (err, resp, status) {
+    console.log(resp);
+});
+</pre>
+</div>
+
+<p>When you will run this, you will get result as deleted as shown in below image.</p>
+
+<p><img alt="" src="https://s3.amazonaws.com/oodles-technologies1/blog-images/428fe972-7277-4a43-a2f5-c41229001cbd.png" /></p>
+
+<p><strong>Note:</strong> If you want to remove more than one documents, do not specify id. You need to specify index name and type only.</p>
+</body>
+</html>
